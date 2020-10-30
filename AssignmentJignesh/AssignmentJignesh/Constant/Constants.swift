@@ -23,3 +23,4 @@ struct Constants {
         static let decodingFailed = "Decoding failed"
     }
 }
+

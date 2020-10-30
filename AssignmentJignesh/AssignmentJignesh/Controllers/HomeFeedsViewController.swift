@@ -1,7 +1,10 @@
 
 import UIKit
 
-class HomeFeedsViewController: UIViewController {
+class HomeFeedsViewController: BaseViewController {
+    
+    // MARK:- Vars
+    
     let cellIdentifier = "canadaCell"
     
     lazy var tableView: UITableView = {
@@ -14,12 +17,15 @@ class HomeFeedsViewController: UIViewController {
     }()
     
     var refreshControl: UIRefreshControl?
-    
+    let dispatchGroup = DispatchGroup()
+
     lazy var viewModel: AboutCanadaViewModel = {
-           let viewModel = AboutCanadaViewModel()
-           return viewModel
+        let viewModel = AboutCanadaViewModel()
+        return viewModel
     }()
     
+    // MARK:- UIViewLifeCycle
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = self.viewModel.title
@@ -28,6 +34,7 @@ class HomeFeedsViewController: UIViewController {
         fetchFeedsResults()
     }
     
+    // MARK:- User Define Calls
     fileprivate func setRefreshControl() {
         refreshControl = UIRefreshControl()
         refreshControl?.tintColor = .red
@@ -41,21 +48,32 @@ class HomeFeedsViewController: UIViewController {
         fetchFeedsResults()
     }
     
+    // MARK:- API Fetchr Calls
+    
     func fetchFeedsResults() {
-        view.activityIndicatory()
-        viewModel.featchFeedsResults(url: Constants.APIEndPoint.baseURL) { [weak self] (result) in
-            self?.view.activityIndicatory(animate: false)
-            self?.tableView.refreshControl?.endRefreshing()
-            switch result {
-            case .success(_):
-                self?.title = self?.viewModel.title
-                self?.tableView.reloadData()
-            case .failure(let error):
-                print(error.errorDescription ?? "")
+        if Reachability.isConnectedToNetwork() {
+            self.dispatchGroup.enter()
+            view.activityIndicatory()
+            viewModel.featchFeedsResults(url: Constants.APIEndPoint.baseURL) { [weak self] (result) in
+                self?.view.activityIndicatory(animate: false)
+                self?.dispatchGroup.leave()
+                self?.tableView.refreshControl?.endRefreshing()
+                switch result {
+                case .success(_):
+                    self?.title = self?.viewModel.title
+                case .failure(let error):
+                    print(error.errorDescription ?? "")
+                }
             }
+            self.dispatchGroup.notify(queue: .main) { [weak self] in
+                self?.tableView.reloadData()
+            }
+        } else {
+            
         }
     }
     
+    // MARK:- UIView Setup and Makeup calls
     fileprivate func setFeedsTableView() {
         view.addSubview(tableView)
         tableView.dataSource = self
@@ -89,10 +107,10 @@ extension HomeFeedsViewController: UITableViewDataSource {
             }
         }
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? HomeContentTableViewCell else {return UITableViewCell()}
-//        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as HomeContentTableViewCell
+        //        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as HomeContentTableViewCell
         cell.titleLabel.text = viewModel.getTitle(index: indexPath.row)
         cell.descriptionLabel.text = viewModel.getDescription(index: indexPath.row)
         let url = URL(string: viewModel.getImageURLString(index: indexPath.row) ?? "")

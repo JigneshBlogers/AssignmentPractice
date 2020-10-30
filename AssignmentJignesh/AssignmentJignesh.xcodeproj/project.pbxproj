@@ -12,7 +12,6 @@
 		E0030A4825496A6900FF0A0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0030A4725496A6900FF0A0B /* AppDelegate.swift */; };
 		E0030A4A25496A6900FF0A0B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0030A4925496A6900FF0A0B /* SceneDelegate.swift */; };
 		E0030A5125496A6A00FF0A0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0030A5025496A6A00FF0A0B /* Assets.xcassets */; };
-		E0030A5F25496A6A00FF0A0B /* AssignmentJigneshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0030A5E25496A6A00FF0A0B /* AssignmentJigneshTests.swift */; };
 		E0030A712549789000FF0A0B /* HomeContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0030A702549789000FF0A0B /* HomeContentTableViewCell.swift */; };
 		E0030A7625497D4A00FF0A0B /* HomeFeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0030A7525497D4A00FF0A0B /* HomeFeedsViewController.swift */; };
 		E02E37A9254BE00800AAF341 /* AboutCanadaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E37A8254BE00800AAF341 /* AboutCanadaViewModel.swift */; };
@@ -20,6 +19,11 @@
 		E02E37AF254C007A00AAF341 /* ImageDownloadHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E37AD254C007A00AAF341 /* ImageDownloadHandler.swift */; };
 		E02E37B7254C00A200AAF341 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E37B1254C00A100AAF341 /* Constants.swift */; };
 		E02E37BA254C00A200AAF341 /* AboutCanada.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E37B6254C00A100AAF341 /* AboutCanada.swift */; };
+		E02E37BD254C034B00AAF341 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E37BB254C034B00AAF341 /* UIView+Extension.swift */; };
+		E02E37BE254C034B00AAF341 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E37BC254C034B00AAF341 /* UIColor+Extension.swift */; };
+		E0457A89254C19E70010DD97 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0457A88254C19E70010DD97 /* BaseViewController.swift */; };
+		E0457A8C254C1D440010DD97 /* AboutCanadaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0457A8A254C1D440010DD97 /* AboutCanadaTests.swift */; };
+		E0457A90254C21180010DD97 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0457A8F254C21170010DD97 /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +49,6 @@
 		E0030A5025496A6A00FF0A0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E0030A5525496A6A00FF0A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0030A5A25496A6A00FF0A0B /* AssignmentJigneshTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssignmentJigneshTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E0030A5E25496A6A00FF0A0B /* AssignmentJigneshTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentJigneshTests.swift; sourceTree = "<group>"; };
 		E0030A6025496A6A00FF0A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0030A702549789000FF0A0B /* HomeContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContentTableViewCell.swift; sourceTree = "<group>"; };
 		E0030A7525497D4A00FF0A0B /* HomeFeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedsViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +57,11 @@
 		E02E37AD254C007A00AAF341 /* ImageDownloadHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloadHandler.swift; sourceTree = "<group>"; };
 		E02E37B1254C00A100AAF341 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E02E37B6254C00A100AAF341 /* AboutCanada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCanada.swift; sourceTree = "<group>"; };
+		E02E37BB254C034B00AAF341 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		E02E37BC254C034B00AAF341 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		E0457A88254C19E70010DD97 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		E0457A8A254C1D440010DD97 /* AboutCanadaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCanadaTests.swift; sourceTree = "<group>"; };
+		E0457A8F254C21170010DD97 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +127,10 @@
 		E0030A4625496A6900FF0A0B /* AssignmentJignesh */ = {
 			isa = PBXGroup;
 			children = (
+				E0457A8E254C21170010DD97 /* Reachability */,
+				E0457A87254C19D00010DD97 /* Base */,
+				E02E37B0254C00A100AAF341 /* Constant */,
+				E02E37BF254C037000AAF341 /* Extension */,
 				E02E37AA254C007A00AAF341 /* Services */,
 				E0030A7B254981F700FF0A0B /* ViewModels */,
 				E0030A7725497D7300FF0A0B /* Controllers */,
@@ -133,7 +145,7 @@
 		E0030A5D25496A6A00FF0A0B /* AssignmentJigneshTests */ = {
 			isa = PBXGroup;
 			children = (
-				E0030A5E25496A6A00FF0A0B /* AssignmentJigneshTests.swift */,
+				E0457A8A254C1D440010DD97 /* AboutCanadaTests.swift */,
 				E0030A6025496A6A00FF0A0B /* Info.plist */,
 			);
 			path = AssignmentJigneshTests;
@@ -175,7 +187,6 @@
 		E02E37AA254C007A00AAF341 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				E02E37B0254C00A100AAF341 /* Constant */,
 				E02E37B5254C00A100AAF341 /* Model */,
 				E02E37AB254C007A00AAF341 /* APIServices */,
 			);
@@ -208,6 +219,31 @@
 			name = Model;
 			path = AssignmentJignesh/Model;
 			sourceTree = SOURCE_ROOT;
+		};
+		E02E37BF254C037000AAF341 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E02E37BC254C034B00AAF341 /* UIColor+Extension.swift */,
+				E02E37BB254C034B00AAF341 /* UIView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		E0457A87254C19D00010DD97 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E0457A88254C19E70010DD97 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		E0457A8E254C21170010DD97 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				E0457A8F254C21170010DD97 /* Reachability.swift */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -360,12 +396,16 @@
 				E02E37AE254C007A00AAF341 /* APIServices.swift in Sources */,
 				E0030A712549789000FF0A0B /* HomeContentTableViewCell.swift in Sources */,
 				E02E37A9254BE00800AAF341 /* AboutCanadaViewModel.swift in Sources */,
+				E02E37BE254C034B00AAF341 /* UIColor+Extension.swift in Sources */,
 				E02E37AF254C007A00AAF341 /* ImageDownloadHandler.swift in Sources */,
+				E0457A89254C19E70010DD97 /* BaseViewController.swift in Sources */,
 				E0030A4825496A6900FF0A0B /* AppDelegate.swift in Sources */,
 				E02E37B7254C00A200AAF341 /* Constants.swift in Sources */,
 				E0030A4A25496A6900FF0A0B /* SceneDelegate.swift in Sources */,
 				E0030A7625497D4A00FF0A0B /* HomeFeedsViewController.swift in Sources */,
+				E02E37BD254C034B00AAF341 /* UIView+Extension.swift in Sources */,
 				E02E37BA254C00A200AAF341 /* AboutCanada.swift in Sources */,
+				E0457A90254C21180010DD97 /* Reachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0030A5F25496A6A00FF0A0B /* AssignmentJigneshTests.swift in Sources */,
+				E0457A8C254C1D440010DD97 /* AboutCanadaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

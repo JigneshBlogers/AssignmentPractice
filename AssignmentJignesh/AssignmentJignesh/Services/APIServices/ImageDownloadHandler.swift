@@ -41,19 +41,8 @@ final class ImageDownloadManager {
                 imageDownloadQueue.addOperation(operation)
                 
             }
-            
         }
     }
-    
-//    func slowDownImage(url:URL?) {
-//        guard let imageURL = url else {
-//            return
-//        }
-//        if let operations = (imageDownloadQueue.operations as? [ImageOperation])?.filter({$0.imageURL.absoluteString == imageURL.absoluteString && $0.isFinished == false && $0.isExecuting == true}) , let operation = operations.first {
-//            operation.queuePriority = .low
-//        }
-//    }
-    
 }
 
 class ImageOperation: Operation {

@@ -27,9 +27,11 @@ class APIServices {
     static let sharedAPIServices = APIServices()
     let configuration = URLSessionConfiguration.default
     var urlSession: URLSession!
+   
     private init() {
         urlSession = URLSession(configuration: configuration)
     }
+    
     func getData<T:Codable>(urlString: String,decodingType: T.Type, completion: @escaping (Result<T,APiError>) -> Void) {
         
         guard let url = URL(string: urlString) else {

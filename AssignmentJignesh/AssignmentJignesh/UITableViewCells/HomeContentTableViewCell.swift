@@ -2,6 +2,7 @@ import UIKit
 
 class HomeContentTableViewCell: UITableViewCell {
     
+    // MARK:- Subivew And Declarations
     var titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -23,50 +24,45 @@ class HomeContentTableViewCell: UITableViewCell {
     
     var profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = #imageLiteral(resourceName: "PhotoPlaceholder")
         return imageView
     }()
     
-    var mainView: UIView = {
-        let view = UIView()
-        view.clipsToBounds = true
-        view.backgroundColor = UIColor.lightText
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addSubview(mainView)
-        mainView.addSubviews(profileImageView, titleLabel, descriptionLabel)
+        self.contentView.addSubviews(profileImageView, titleLabel, descriptionLabel)
         addConstraints()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+          super.init(coder: aDecoder)
+    }
+      
     override func prepareForReuse() {
         self.profileImageView.image = #imageLiteral(resourceName: "PhotoPlaceholder")
+        self.titleLabel.text =  nil
+        self.descriptionLabel.text = nil
     }
     
+    // MARK:- Setting Anchors
     fileprivate func addConstraints() {
-        let views: [String: Any] = ["titleLabel":titleLabel,"descriptionLabel":descriptionLabel,"profileImageView":profileImageView,"mainView":mainView]
-        var allConstraints: [NSLayoutConstraint] = []
         
-        allConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[mainView]-|", options: [], metrics: nil, views: views)
-        allConstraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-[mainView]-|", options: [], metrics: nil, views: views)
+        let marginGuide = contentView.layoutMarginsGuide
+            
+        profileImageView.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor).isActive = true
+        profileImageView.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
+        profileImageView.trailingAnchor.constraint(equalTo:marginGuide.trailingAnchor).isActive = true
         
-        allConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-[profileImageView(125)]-[titleLabel]-|", options: [], metrics: nil, views: views)
-        allConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:[profileImageView]-[descriptionLabel]-|", options: [], metrics: nil, views: views)
-        allConstraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-[profileImageView(125)]->=5-|", options: [], metrics: nil, views: views)
+        titleLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
         
-        allConstraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-[titleLabel]-4-[descriptionLabel]->=4-|", options: [], metrics: nil, views: views)
-        
-        NSLayoutConstraint.activate(allConstraints)
+        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+        descriptionLabel.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
+        descriptionLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
+        descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
 }
