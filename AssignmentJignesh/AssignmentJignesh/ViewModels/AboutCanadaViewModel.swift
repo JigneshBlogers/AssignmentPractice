@@ -1,10 +1,3 @@
-//
-//  AboutCanadaViewModel.swift
-//  WyndhamAssignment
-//
-//  Created by Amol P on 15/05/19.
-//  Copyright © 2019 pccs. All rights reserved.
-//
 
 import Foundation
 
@@ -33,7 +26,7 @@ class AboutCanadaViewModel {
         return aboutCanada?.rows[index].imageURL
     }
     
-    func getData(url:String, completion: @escaping (Result<Bool,APiError>) -> Void) {
+    func featchFeedsResults(url:String, completion: @escaping (Result<Bool,APiError>) -> Void) {
         APIServices.sharedAPIServices.getData(urlString: url,decodingType: AboutCanada.self) { [weak self] (result) in
             switch result {
             case .success(let value):
