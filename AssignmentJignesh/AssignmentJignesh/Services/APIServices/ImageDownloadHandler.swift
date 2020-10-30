@@ -1,10 +1,3 @@
-//
-//  ImageDownloadHandler.swift
-//  Demo
-//
-//  Created by Amol P on 26/04/19.
-//  Copyright © 2019 pccs. All rights reserved.
-//
 
 import UIKit
 

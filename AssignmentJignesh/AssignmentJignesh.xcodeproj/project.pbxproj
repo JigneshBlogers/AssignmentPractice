@@ -19,8 +19,6 @@
 		E02E37AE254C007A00AAF341 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E37AC254C007A00AAF341 /* APIServices.swift */; };
 		E02E37AF254C007A00AAF341 /* ImageDownloadHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E37AD254C007A00AAF341 /* ImageDownloadHandler.swift */; };
 		E02E37B7254C00A200AAF341 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E37B1254C00A100AAF341 /* Constants.swift */; };
-		E02E37B8254C00A200AAF341 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E37B3254C00A100AAF341 /* UIColor+Extension.swift */; };
-		E02E37B9254C00A200AAF341 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E37B4254C00A100AAF341 /* UIView+Extension.swift */; };
 		E02E37BA254C00A200AAF341 /* AboutCanada.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E37B6254C00A100AAF341 /* AboutCanada.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,8 +53,6 @@
 		E02E37AC254C007A00AAF341 /* APIServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
 		E02E37AD254C007A00AAF341 /* ImageDownloadHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloadHandler.swift; sourceTree = "<group>"; };
 		E02E37B1254C00A100AAF341 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		E02E37B3254C00A100AAF341 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		E02E37B4254C00A100AAF341 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E02E37B6254C00A100AAF341 /* AboutCanada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCanada.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				E02E37B0254C00A100AAF341 /* Constant */,
-				E02E37B2254C00A100AAF341 /* Extensions */,
 				E02E37B5254C00A100AAF341 /* Model */,
 				E02E37AB254C007A00AAF341 /* APIServices */,
 			);
@@ -203,16 +198,6 @@
 			);
 			name = Constant;
 			path = AssignmentJignesh/Constant;
-			sourceTree = SOURCE_ROOT;
-		};
-		E02E37B2254C00A100AAF341 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				E02E37B3254C00A100AAF341 /* UIColor+Extension.swift */,
-				E02E37B4254C00A100AAF341 /* UIView+Extension.swift */,
-			);
-			name = Extensions;
-			path = AssignmentJignesh/Extensions;
 			sourceTree = SOURCE_ROOT;
 		};
 		E02E37B5254C00A100AAF341 /* Model */ = {
@@ -374,11 +359,9 @@
 			files = (
 				E02E37AE254C007A00AAF341 /* APIServices.swift in Sources */,
 				E0030A712549789000FF0A0B /* HomeContentTableViewCell.swift in Sources */,
-				E02E37B9254C00A200AAF341 /* UIView+Extension.swift in Sources */,
 				E02E37A9254BE00800AAF341 /* AboutCanadaViewModel.swift in Sources */,
 				E02E37AF254C007A00AAF341 /* ImageDownloadHandler.swift in Sources */,
 				E0030A4825496A6900FF0A0B /* AppDelegate.swift in Sources */,
-				E02E37B8254C00A200AAF341 /* UIColor+Extension.swift in Sources */,
 				E02E37B7254C00A200AAF341 /* Constants.swift in Sources */,
 				E0030A4A25496A6900FF0A0B /* SceneDelegate.swift in Sources */,
 				E0030A7625497D4A00FF0A0B /* HomeFeedsViewController.swift in Sources */,
