@@ -25,6 +25,7 @@ class HomeFeedsViewController: UIViewController {
         addRefreshControl()
         getData()
     }
+    
     fileprivate func addRefreshControl() {
         refreshControl = UIRefreshControl()
         refreshControl?.tintColor = .red
@@ -33,9 +34,11 @@ class HomeFeedsViewController: UIViewController {
         tableView.refreshControl = refreshControl
     }
     
-    @objc func refreshData() {
+    @objc
+    func refreshData() {
         getData()
     }
+    
     func getData() {
         view.activityIndicatory()
         viewModel.getData(url: Constants.APIEndPoint.baseURL) { [weak self] (result) in
@@ -53,22 +56,21 @@ class HomeFeedsViewController: UIViewController {
     }
     
     fileprivate func setConstrains() {
-        let views: [String: Any] = ["tableView":tableView]
-        var allConstraints: [NSLayoutConstraint] = []
-        allConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|[tableView]|", options: [], metrics: nil, views: views)
-        allConstraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|[tableView]|", options: [], metrics: nil, views: views)
-        NSLayoutConstraint.activate(allConstraints)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
     }
     
     fileprivate func setUPTableView() {
-        
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.register(HomeContentTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
     }
 }
 
-extension HomeFeedsViewController: UITableViewDataSource,UITableViewDelegate {
+extension HomeFeedsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.noOfRows
@@ -89,7 +91,7 @@ extension HomeFeedsViewController: UITableViewDataSource,UITableViewDelegate {
             }
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? HomeContentTableViewCell else {return UITableViewCell()}
