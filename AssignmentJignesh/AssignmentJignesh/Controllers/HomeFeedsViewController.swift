@@ -2,47 +2,101 @@
 import UIKit
 
 class HomeFeedsViewController: UIViewController {
+    let cellIdentifier = "canadaCell"
     
-    // MARK: - Properties
-
-    var tableViewFeeds = UITableView() {
-        didSet {
-            // Configure tablew View
-            tableViewFeeds.dataSource = self
-            tableViewFeeds.register(HomeContentTableViewCell.self, forCellReuseIdentifier: HomeContentTableViewCell.reuseIdentifire)
+    var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.separatorColor = .clear
+        tableView.tableFooterView = UIView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        return tableView
+    }()
+    
+    var refreshControl: UIRefreshControl?
+    
+    var viewModel = AboutCanadaViewModel()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = self.viewModel.title
+        setUPTableView()
+        setConstrains()
+        addRefreshControl()
+        getData()
+    }
+    fileprivate func addRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.tintColor = .red
+        refreshControl?.attributedTitle = NSAttributedString(string: Constants.CommonText.pullToRefresh)
+        refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
+    
+    @objc func refreshData() {
+        getData()
+    }
+    func getData() {
+        view.activityIndicatory()
+        viewModel.getData(url: Constants.APIEndPoint.baseURL) { [weak self] (result) in
+            self?.view.activityIndicatory(animate: false)
+            self?.tableView.refreshControl?.endRefreshing()
+            switch result {
+            case .success(_):
+                self?.title = self?.viewModel.title
+                self?.tableView.reloadData()
+                
+            case .failure(let error):
+                print(error.errorDescription ?? "")
+            }
         }
     }
     
-    var safeArea: UILayoutGuide!
-
-    // MARK: - UIView LifeCycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        view.backgroundColor = .white
-        safeArea = view.layoutMarginsGuide
-        setupTableView()
+    fileprivate func setConstrains() {
+        let views: [String: Any] = ["tableView":tableView]
+        var allConstraints: [NSLayoutConstraint] = []
+        allConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|[tableView]|", options: [], metrics: nil, views: views)
+        allConstraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|[tableView]|", options: [], metrics: nil, views: views)
+        NSLayoutConstraint.activate(allConstraints)
     }
-
-    // MARK: - User Define Function Calls
-    func setupTableView() {
-      self.view.addSubview(tableViewFeeds)
-      tableViewFeeds.translatesAutoresizingMaskIntoConstraints = false
-      tableViewFeeds.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-      tableViewFeeds.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-      tableViewFeeds.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-      tableViewFeeds.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+    
+    fileprivate func setUPTableView() {
+        
+        view.addSubview(tableView)
+        tableView.dataSource = self
+        tableView.register(HomeContentTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
     }
 }
 
-extension HomeFeedsViewController: UITableViewDataSource {
+extension HomeFeedsViewController: UITableViewDataSource,UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return viewModel.noOfRows
+    }
+    
+    fileprivate func downloadImage(_ url: URL?, _ indexPath: IndexPath, _ tableView: UITableView) {
+        ImageDownloadManager.shread.downloadImage(url: url, indexPath: indexPath) { (image, _, indexPath1, _) in
+            if image != nil {
+                DispatchQueue.main.async {
+                    let cell1 = tableView.cellForRow(at: indexPath1!) as? HomeContentTableViewCell
+                    cell1?.profileImageView.image = image
+                }
+            } else {
+                DispatchQueue.main.async {
+                    let cell1 = tableView.cellForRow(at: indexPath1!) as? HomeContentTableViewCell
+                    cell1?.profileImageView.image = #imageLiteral(resourceName: "placeholder")
+                }
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: HomeContentTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath) as! HomeContentTableViewCell
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? HomeContentTableViewCell else {return UITableViewCell()}
+        cell.titleLabel.text = viewModel.getTitle(index: indexPath.row)
+        cell.descriptionLabel.text = viewModel.getDescription(index: indexPath.row)
+        let url = URL(string: viewModel.getImageURLString(index: indexPath.row) ?? "")
+        downloadImage(url, indexPath, tableView)
         return cell
     }
 }
