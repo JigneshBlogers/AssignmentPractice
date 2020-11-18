@@ -1,6 +1,7 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 extension UIView {
     func addSubviews(_ views: UIView...) {
         for view in views {
@@ -26,8 +27,8 @@ extension UIView {
         
         let activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.frame = CGRect(x:0.0,y: 0.0,width: 40.0, height: 40.0)
-        activityIndicatorView.style =
-            UIActivityIndicatorView.Style.large
+        activityIndicatorView.style = .large
+        
         activityIndicatorView.center = CGPoint(x: viewBackgroundLoading.frame.size.width / 2, y: viewBackgroundLoading.frame.size.height / 2)
         if animate {
             viewBackgroundLoading.addSubview(activityIndicatorView)

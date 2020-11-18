@@ -17,10 +17,13 @@ struct Constants {
     struct APIEndPoint {
        static let baseURL = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
     }
+    
     struct ErrorMessages {
         static let invalidURL = "URL is invalid"
         static let invalidData = "Malformed data received from fetchAllRooms service"
         static let decodingFailed = "Decoding failed"
+        static let apiFailed = "Something went wrong, please try again after sometime"
+        static let noInternet = "No Internet Connecttion is Found, Please check!"
     }
 }
 

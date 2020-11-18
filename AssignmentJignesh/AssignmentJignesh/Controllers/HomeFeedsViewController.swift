@@ -54,22 +54,25 @@ class HomeFeedsViewController: BaseViewController {
         if Reachability.isConnectedToNetwork() {
             self.dispatchGroup.enter()
             view.activityIndicatory()
-            viewModel.featchFeedsResults(url: Constants.APIEndPoint.baseURL) { [weak self] (result) in
+            viewModel.fetchFeedsResults(url: Constants.APIEndPoint.baseURL) { [weak self] (result) in
                 self?.view.activityIndicatory(animate: false)
                 self?.dispatchGroup.leave()
-                self?.tableView.refreshControl?.endRefreshing()
                 switch result {
                 case .success(_):
                     self?.title = self?.viewModel.title
                 case .failure(let error):
-                    print(error.errorDescription ?? "")
+                    self?.showAlert(title: "Error", message: error.errorDescription ?? Constants.ErrorMessages.apiFailed)
                 }
             }
             self.dispatchGroup.notify(queue: .main) { [weak self] in
+                self?.tableView.refreshControl?.endRefreshing()
                 self?.tableView.reloadData()
             }
         } else {
-            
+            self.dispatchGroup.notify(queue: .main) { [weak self] in
+                self?.tableView.refreshControl?.endRefreshing()
+                self?.showAlert(title: "No Internt", message: Constants.ErrorMessages.noInternet)
+            }
         }
     }
     
@@ -102,7 +105,7 @@ extension HomeFeedsViewController: UITableViewDataSource {
             } else {
                 DispatchQueue.main.async {
                     let cellWithPlaceHolder = tableView.cellForRow(at: indexPathImageLoader!) as? HomeContentTableViewCell
-                    cellWithPlaceHolder?.profileImageView.image = #imageLiteral(resourceName: "placeholder")
+                    cellWithPlaceHolder?.profileImageView.image = #imageLiteral(resourceName: "PhotoPlaceholder")
                 }
             }
         }
@@ -110,7 +113,6 @@ extension HomeFeedsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? HomeContentTableViewCell else {return UITableViewCell()}
-        //        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as HomeContentTableViewCell
         cell.titleLabel.text = viewModel.getTitle(index: indexPath.row)
         cell.descriptionLabel.text = viewModel.getDescription(index: indexPath.row)
         let url = URL(string: viewModel.getImageURLString(index: indexPath.row) ?? "")

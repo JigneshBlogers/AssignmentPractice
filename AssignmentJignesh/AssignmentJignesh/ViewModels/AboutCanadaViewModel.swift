@@ -26,7 +26,7 @@ class AboutCanadaViewModel {
         return aboutCanada?.rows[index].imageURL
     }
     
-    func featchFeedsResults(url:String, completion: @escaping (Result<Bool,APiError>) -> Void) {
+    func fetchFeedsResults(url:String, completion: @escaping (Result<Bool,APiError>) -> Void) {
         APIServices.sharedAPIServices.getData(urlString: url,decodingType: AboutCanada.self) { [weak self] (result) in
             switch result {
             case .success(let value):
