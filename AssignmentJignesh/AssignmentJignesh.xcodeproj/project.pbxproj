@@ -14,6 +14,7 @@
 		E0030A5125496A6A00FF0A0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0030A5025496A6A00FF0A0B /* Assets.xcassets */; };
 		E0030A712549789000FF0A0B /* HomeContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0030A702549789000FF0A0B /* HomeContentTableViewCell.swift */; };
 		E0030A7625497D4A00FF0A0B /* HomeFeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0030A7525497D4A00FF0A0B /* HomeFeedsViewController.swift */; };
+		E014F7E0256631A6006DB8DC /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E014F7DF256631A6006DB8DC /* FeedsViewController.swift */; };
 		E02E37A9254BE00800AAF341 /* AboutCanadaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E37A8254BE00800AAF341 /* AboutCanadaViewModel.swift */; };
 		E02E37AE254C007A00AAF341 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E37AC254C007A00AAF341 /* APIServices.swift */; };
 		E02E37AF254C007A00AAF341 /* ImageDownloadHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02E37AD254C007A00AAF341 /* ImageDownloadHandler.swift */; };
@@ -52,6 +53,7 @@
 		E0030A6025496A6A00FF0A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0030A702549789000FF0A0B /* HomeContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContentTableViewCell.swift; sourceTree = "<group>"; };
 		E0030A7525497D4A00FF0A0B /* HomeFeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedsViewController.swift; sourceTree = "<group>"; };
+		E014F7DF256631A6006DB8DC /* FeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
 		E02E37A8254BE00800AAF341 /* AboutCanadaViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCanadaViewModel.swift; sourceTree = "<group>"; };
 		E02E37AC254C007A00AAF341 /* APIServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
 		E02E37AD254C007A00AAF341 /* ImageDownloadHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloadHandler.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			children = (
 				E0457A8A254C1D440010DD97 /* AboutCanadaTests.swift */,
 				E0030A6025496A6A00FF0A0B /* Info.plist */,
+				E014F7DF256631A6006DB8DC /* FeedsViewController.swift */,
 			);
 			path = AssignmentJigneshTests;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E014F7E0256631A6006DB8DC /* FeedsViewController.swift in Sources */,
 				E0457A8C254C1D440010DD97 /* AboutCanadaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

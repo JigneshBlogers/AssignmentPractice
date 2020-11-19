@@ -4,6 +4,7 @@ import XCTest
 
 class AboutCanadaTests: XCTestCase {
 
+    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -45,7 +46,7 @@ class AboutCanadaTests: XCTestCase {
     func test_APIService_InvalidData() {
         let exceptations = self.expectation(description: "InvalidData")
         let viewmodel = AboutCanadaViewModel()
-        viewmodel.featchFeedsResults(url: "https://www.") { (result) in
+        viewmodel.fetchFeedsResults(url: "https://www.") { (result) in
             switch result {
             case .success(let success):
                 XCTAssertFalse(success)
@@ -60,7 +61,7 @@ class AboutCanadaTests: XCTestCase {
     func test_APIService_DecodingFailed() {
         let exceptations = self.expectation(description: "DecodingFailed")
         let viewmodel = AboutCanadaViewModel()
-        viewmodel.featchFeedsResults(url: "https://www.google.com") { (result) in
+        viewmodel.fetchFeedsResults(url: "https://www.google.com") { (result) in
             switch result {
             case .success(let success):
                 XCTAssertFalse(success)
