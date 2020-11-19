@@ -15,7 +15,7 @@ class AboutCanadaTests: XCTestCase {
     func test_AboutCanadaData_Success() {
         let exceptations = self.expectation(description: "Get canada data")
         let viewmodel = AboutCanadaViewModel()
-        viewmodel.featchFeedsResults(url: Constants.APIEndPoint.baseURL) { (result) in
+        viewmodel.fetchFeedsResults(url: Constants.APIEndPoint.baseURL) { (result) in
             switch result {
             case .success(let success):
                 XCTAssertTrue(success)
@@ -30,7 +30,7 @@ class AboutCanadaTests: XCTestCase {
     func test_APIService_InValidURL() {
         let exceptations = self.expectation(description: "InValidURL")
         let viewmodel = AboutCanadaViewModel()
-        viewmodel.featchFeedsResults(url: "") { (result) in
+        viewmodel.fetchFeedsResults(url: "") { (result) in
             switch result {
             case .success(let success):
                 XCTAssertFalse(success)
