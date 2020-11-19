@@ -16,14 +16,6 @@ class FeedsViewController: XCTestCase {
         XCTAssertNotNil(viewControllerUnderTest.tableView)
     }
     
-    func testTableViewHasDelegate() {
-        XCTAssertNotNil(viewControllerUnderTest.tableView.delegate)
-    }
-    
-    func testTableViewConfromsToTableViewDelegateProtocol() {
-        XCTAssertTrue(viewControllerUnderTest.conforms(to: UITableViewDelegate.self))
-    }
-    
     func testTableViewHasDataSource() {
         XCTAssertNotNil(viewControllerUnderTest.tableView.dataSource)
     }
