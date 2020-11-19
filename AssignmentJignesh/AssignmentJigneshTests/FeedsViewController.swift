@@ -1,17 +1,10 @@
-//
-//  FeedsViewController.swift
-//  AssignmentJigneshTests
-//
-//  Created by Kalantri, Jignesh (Cognizant) on 19/11/20.
-//  Copyright © 2020 Kalantri, Jignesh (Cognizant). All rights reserved.
-//
 
 import XCTest
 @testable import AssignmentJignesh
 
 class FeedsViewController: XCTestCase {
 
-    var viewControllerUnderTest: HomeFeedsViewController!
+    var viewControllerUnderTest = HomeFeedsViewController()
 
     override func setUp() {
         super.setUp()
